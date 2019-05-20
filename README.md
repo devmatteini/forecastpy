@@ -3,7 +3,7 @@
 A python module to interact with the OpenWeatherAPI in a simple and fast way.
 
 ## Table of Contents
-- [Getting Started](#getting&#32;started)
+- [Getting Started](#getting-started)
     - [Installation](#installation)
     - [Usage](#usage)
 - [Documentation](#documentation)
