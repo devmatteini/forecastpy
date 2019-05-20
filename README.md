@@ -2,20 +2,34 @@
 
 A python module to interact with the OpenWeatherAPI in a simple and fast way.
 
+## Table of Contents
+- [Getting Started](#getting&#32;started)
+    - [Installation](#installation)
+    - [Usage](#usage)
+- [Documentation](#documentation)
+    - [Dependencies](#Dependencies)
+    - [Unit](#Unit)
+    - [Weather](#Weather)
+    - [Errors](#Errors)
+- [Technologies](#Technologies)
+- [Versioning](#Versioning)
+- [Author](#Author)
+- [Licence](#License)
+
 ## Getting Started
 
-### Installing
+### Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install WeatherPy.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install ForecastPy.
 
 ```
 pip install forecastpy
 ```
 
-## Usage
+### Usage
 
 ```
-from forecast import Weather, Unit
+from forecastpy import Weather, Unit
 
 # Init Weather object with your open weather api key
 weather = Weather('YOUR_API_KEY')
@@ -25,6 +39,12 @@ w = weather.get_current_weather('CITY_NAME',Unit.METRIC)
 ```
 
 ## Documentation
+
+### Dependencies
+Python packages:
+- json
+- requests
+- datetime
 
 ### Unit
 
@@ -77,6 +97,10 @@ This method returns a dictionary like the one below:
 }
 ```
 
+For error handling see the [Errors](#errors) section below.
+
+### Errors
+
 In case something goes wrong this dictionary is what is returned:
 ```
 {
@@ -95,7 +119,7 @@ Common status code error:
 |429 |  API key blocked |
 |500 | internal server error|
 
-##### Check The Status Code of your request
+##### Check the status code of your request
 If you want to quickly check if your request was successful or not just check the `is_status_code_ok` like:
 ```
 w['is_status_code_ok']
@@ -108,11 +132,11 @@ If the response code is between 200 and 400 it's `True` otherwise it's `False`
 
 ## Versioning
 
-I use [Git](https://git-scm.com/) for versioning. For the versions available, see the [tags on this repository](https://github.com/devmatteini/forecastpy).
+- [Git](https://git-scm.com/)
 
 ## Author
 
-- **Cosimo Matteini** - [devmatteini on github](https://github.com/devmatteini)
+> **Cosimo Matteini** - [devmatteini on github](https://github.com/devmatteini)
 
 ## License
 
