@@ -21,7 +21,7 @@ class Weather:
         self.API_KEY = API_KEY
 
     def get_current_weather(self, city_name, unit = Unit.KELVIN):
-        if self.API_KEY is None or city_name is None or city_name is '':
+        if (self.API_KEY is None or self.API_KEY is '') or (city_name is None or city_name is ''):
             return {
                 'is_status_code_ok': False,
                 'cod': '400', 
@@ -55,7 +55,7 @@ class Weather:
             }
 
     def get_days_weather(self, city_name, unit = Unit.KELVIN, days = Days.FIVE):
-        if self.API_KEY is None or city_name is None or city_name is '':
+        if (self.API_KEY is None or self.API_KEY is '') or (city_name is None or city_name is ''):
             return {
                 'is_status_code_ok': False,
                 'cod': '400', 

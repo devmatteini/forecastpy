@@ -9,6 +9,7 @@ A python module to interact with the OpenWeatherAPI in a simple and fast way.
 - [Documentation](#documentation)
     - [Dependencies](#Dependencies)
     - [Unit](#Unit)
+    - [Days](#Days)
     - [Weather](#Weather)
     - [Errors](#Errors)
 - [Technologies](#Technologies)
@@ -62,6 +63,26 @@ Unit.METRIC # return 'metric'
 Unit.FAHRENHEIT # return 'imperail'
 ```
 
+### Days
+
+Days is a class which makes thing easier when you have to choose the number of days you want.
+The lowest number is 2 and the maximum is 5 (which is the higher number set on the free version of the OpenWeatherAPI)
+
+The available days are:
+
+- Two
+- Three
+- Four
+- Five (Default option)
+
+##### Usage
+
+```
+Days.TWO # return 2
+Days.THREE # return 3
+...
+```
+
 ### Weather
 
 Weather is the class you'll need to use to interact with the open weather api.
@@ -73,10 +94,10 @@ It requires the open weather api key as its only parameter when you have to init
 
 It makes an http request (throught the [requests](http://2.python-requests.org/en/master/) module) to the OpenWeatherMap API to get the current weather forecast of the city you searched.
 
-| Parameter | Description |
-| --------- | ------------|
-| city_name | a string that represents the city you want to know the weather|
-| unit      | default unit is kelvin (You can leave the unit parameter empty). If you want to change the unit see the Unit class section above |
+| Parameter | Description | Required |
+| --------- | ------------|------------|
+| city_name | a string that represents the city you want to know the weather| Yes |
+| unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info.| No |
 
 This method returns a dictionary like the one below:
 
@@ -97,7 +118,133 @@ This method returns a dictionary like the one below:
 }
 ```
 
-For error handling see the [Errors](#errors) section below.
+For error see the [Errors](#errors) section below.
+
+##### get_days_weather(self, city_name, unit = Unit.KELVIN, days = Days.FIVE)
+
+If you want to know the weather for a maximum of 5 days (including the current day) you have to use this method.
+
+| Parameter | Description | Required |
+| --------- | ------------|------------|
+| city_name | a string that represents the city you want to know the weather| Yes |
+| unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info.| No |
+| days | default day is 5 (You can leave it empty). See [Days](#Days) for futher info. | No |
+
+This method returns a dictionary like the one below (in this example the unit was metric and the days were two):
+```
+{
+   'is_status_code_ok':True,
+   'id':2643743,
+   'name':'London',
+   'country':'GB',
+   'forecasts':[
+      {
+         'date':'28/05/2019',
+         'temp_min':13,
+         'temp_max':18,
+         'weather':[
+            {
+               'time':'17:00:00',
+               'main':'Clear',
+               'description':'Clear sky',
+               'temperature':17,
+               'wind_speed':3.88,
+               'icon':'01d'
+            },
+            {
+               'time':'20:00:00',
+               'main':'Clear',
+               'description':'Clear sky',
+               'temperature':16,
+               'wind_speed':2.86,
+               'icon':'01d'
+            },
+            {
+               'time':'23:00:00',
+               'main':'Rain',
+               'description':'Light rain',
+               'temperature':13,
+               'wind_speed':0.68,
+               'icon':'10n'
+            }
+         ]
+      },
+      {
+         'date':'29/05/2019',
+         'temp_min':10,
+         'temp_max':18,
+         'weather':[
+            {
+               'time':'02:00:00',
+               'main':'Rain',
+               'description':'Light rain',
+               'temperature':11,
+               'wind_speed':1.35,
+               'icon':'10n'
+            },
+            {
+               'time':'05:00:00',
+               'main':'Clouds',
+               'description':'Overcast clouds',
+               'temperature':10,
+               'wind_speed':1.26,
+               'icon':'04n'
+            },
+            {
+               'time':'08:00:00',
+               'main':'Clouds',
+               'description':'Broken clouds',
+               'temperature':11,
+               'wind_speed':1.21,
+               'icon':'04d'
+            },
+            {
+               'time':'11:00:00',
+               'main':'Clouds',
+               'description':'Scattered clouds',
+               'temperature':15,
+               'wind_speed':1.57,
+               'icon':'03d'
+            },
+            {
+               'time':'14:00:00',
+               'main':'Clouds',
+               'description':'Scattered clouds',
+               'temperature':15,
+               'wind_speed':4.3,
+               'icon':'03d'
+            },
+            {
+               'time':'17:00:00',
+               'main':'Clouds',
+               'description':'Broken clouds',
+               'temperature':15,
+               'wind_speed':4.64,
+               'icon':'04d'
+            },
+            {
+               'time':'20:00:00',
+               'main':'Clouds',
+               'description':'Broken clouds',
+               'temperature':15,
+               'wind_speed':3.7,
+               'icon':'04d'
+            },
+            {
+               'time':'23:00:00',
+               'main':'Clouds',
+               'description':'Overcast clouds',
+               'temperature':14,
+               'wind_speed':3.79,
+               'icon':'04n'
+            }
+         ]
+      }
+   ]
+}
+```
+
+For error see the [Errors](#errors) section below.
 
 ### Errors
 
@@ -128,7 +275,7 @@ If the response code is between 200 and 400 it's `True` otherwise it's `False`
 
 ## Built With
 
-- [Python](https://python.org)
+- [Python](https://python.org) (3.7)
 
 ## Versioning
 
