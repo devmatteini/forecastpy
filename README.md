@@ -36,7 +36,10 @@ from forecastpy import Weather, Unit
 weather = Weather('YOUR_API_KEY')
 
 # Get current weather from a city name
-w = weather.get_current_weather('CITY_NAME',Unit.METRIC)
+w = weather.get_current_weather('CITY_NAME', Unit.METRIC)
+
+# Get forecast for more than one day
+f = weather.get_days_weather('CITY_NAME', Unit.METRIC, Days.TWO)
 ```
 
 ## Documentation
