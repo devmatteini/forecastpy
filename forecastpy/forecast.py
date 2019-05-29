@@ -34,11 +34,11 @@ class Weather:
         data = json.loads(res.text)
 
         # Status code higher than 400 - see docs for futher details on status code errors
-        if not res:
+        if not res.ok:
             data['is_status_code_ok'] = False
-            return data;
+            return data
 
-        # Status code between 200 and 400
+        # Status code is less than 400
         return {
                 'is_status_code_ok': True,
                 'id': data['id'],
@@ -68,11 +68,11 @@ class Weather:
         data = json.loads(res.text)     
         
         # Status code higher than 400 - see docs for futher details on status code error        
-        if not res:
+        if not res.ok:
             data["is_status_code_ok"] = False
             return data
 
-        # Status code between 200 and 400   
+        # Status code is less than 400
         forecasts = {
                 'is_status_code_ok': True,
                 'id': data['city']['id'],

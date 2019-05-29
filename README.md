@@ -7,15 +7,15 @@ A python module to interact with the OpenWeatherAPI in a simple and fast way.
     - [Installation](#installation)
     - [Usage](#usage)
 - [Documentation](#documentation)
-    - [Dependencies](#Dependencies)
-    - [Unit](#Unit)
-    - [Days](#Days)
-    - [Weather](#Weather)
-    - [Errors](#Errors)
-- [Technologies](#Technologies)
-- [Versioning](#Versioning)
-- [Author](#Author)
-- [Licence](#License)
+    - [Dependencies](#dependencies)
+    - [Unit](#unit)
+    - [Days](#days)
+    - [Weather](#weather)
+    - [Errors](#errors)
+- [Built With](#built-With)
+- [Version](#version)
+- [Author](#author)
+- [Licence](#license)
 
 ## Getting Started
 
@@ -30,7 +30,7 @@ pip install forecastpy
 ### Usage
 
 ```
-from forecastpy import Weather, Unit
+from forecastpy import Weather, Unit, Days
 
 # Init Weather object with your open weather api key
 weather = Weather('YOUR_API_KEY')
@@ -38,8 +38,8 @@ weather = Weather('YOUR_API_KEY')
 # Get current weather from a city name
 w = weather.get_current_weather('CITY_NAME', Unit.METRIC)
 
-# Get forecast for more than one day
-f = weather.get_days_weather('CITY_NAME', Unit.METRIC, Days.TWO)
+# Get weather for more than one day
+w2 = weather.get_days_weather('CITY_NAME', Unit.METRIC, Days.TWO)
 ```
 
 ## Documentation
@@ -69,7 +69,7 @@ Unit.FAHRENHEIT # return 'imperail'
 ### Days
 
 Days is a class which makes thing easier when you have to choose the number of days you want.
-The lowest number is 2 and the maximum is 5 (which is the higher number set on the free version of the OpenWeatherAPI)
+The lowest number is 2 and the maximum is 5 (which is the higher number of day set on the free version of the OpenWeatherAPI)
 
 The available days are:
 
@@ -88,8 +88,9 @@ Days.THREE # return 3
 
 ### Weather
 
-Weather is the class you'll need to use to interact with the open weather api.
-It requires the open weather api key as its only parameter when you have to initialize it.
+Weather is the class you'll need to use to interact with the OpenWeatherAPI.
+It requires the OpenWeatherAPI key as its only parameter when you have to initialize it.
+Learn more about the [OpenWeatherAPI](https://openweathermap.org/api).
 
 #### Methods
 
@@ -106,32 +107,31 @@ This method returns a dictionary like the one below:
 
 ```
 {
-        is_status_code_ok: True,
-        id: 2643743,
-        name: 'London',
-        country: 'GB',
-        forecast:{
-            main: 'Drizzle',
-            description: 'light intensity drizzle',
-            temperature: 280.32,
-            humidity: 81,
-            wind_speed: 4.1,
-            icon: '09d'
+        'is_status_code_ok': True,
+        'id': 2643743,
+        'name': 'London',
+        'country': 'GB',
+        'forecast':{
+            'main': 'Drizzle',
+            'description': 'light intensity drizzle',
+            'temperature': 280.32,
+            'humidity': 81,
+            'wind_speed': 4.1,
+            'icon': '09d'
         }
 }
 ```
-
-For error see the [Errors](#errors) section below.
+For errors, see the [Errors](#errors) section.
 
 ##### get_days_weather(self, city_name, unit = Unit.KELVIN, days = Days.FIVE)
 
-If you want to know the weather for a maximum of 5 days (including the current day) you have to use this method.
+If you want to know the weather of a city for a maximum of 5 days (including the current day) you have to use this method.
 
 | Parameter | Description | Required |
 | --------- | ------------|------------|
 | city_name | a string that represents the city you want to know the weather| Yes |
 | unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info.| No |
-| days | default day is 5 (You can leave it empty). See [Days](#Days) for futher info. | No |
+| days | default day is five [5] (You can leave it empty). See [Days](#Days) for futher info. | No |
 
 This method returns a dictionary like the one below (in this example the unit was metric and the days were two):
 ```
@@ -247,13 +247,14 @@ This method returns a dictionary like the one below (in this example the unit wa
 }
 ```
 
-For error see the [Errors](#errors) section below.
+For errors, see the [Errors](#errors) section.
 
 ### Errors
 
 In case something goes wrong this dictionary is what is returned:
 ```
 {
+    'is_status_code_ok': False,
     'cod': '404', 
     'message': 'city not found'
 }
@@ -269,20 +270,24 @@ Common status code error:
 |429 |  API key blocked |
 |500 | internal server error|
 
-##### Check the status code of your request
-If you want to quickly check if your request was successful or not just check the `is_status_code_ok` like:
+#### Check the status code of your request
+If you want to quickly check if your request was successful or not, just check the `is_status_code_ok` like:
 ```
 w['is_status_code_ok']
 ```
-If the response code is between 200 and 400 it's `True` otherwise it's `False`
+If the response status code is less than 400 it's `True` otherwise it's `False`
 
 ## Built With
 
 - [Python](https://python.org) (3.7)
 
-## Versioning
+## Version
 
-- [Git](https://git-scm.com/)
+> 1.0.0
+
+   Initial release. Include features like get the current weather of a city or get the weather of a city for more than one day.
+   
+   
 
 ## Author
 
