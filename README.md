@@ -286,6 +286,9 @@ If the response status code is less than 400 it's `True` otherwise it's `False`
 > 1.0.0
 
    Initial release. Include features like get the current weather of a city or get the weather of a city for more than one day.
+
+> 1.0.1
+   Add install_requires to setup.py file.
    
    
 
