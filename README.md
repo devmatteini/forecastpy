@@ -2,6 +2,8 @@
 
 A python package to interact with the OpenWeatherAPI in a simple and fast way.
 
+[Live demo](https://devmc.pythonanywhere.com) here.
+
 ## Table of Contents
 
 - [Getting Started](#getting-started)
