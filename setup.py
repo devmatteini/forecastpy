@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="forecastpy",
-    version="1.0.1",
+    version="1.0.2",
     author="Cosimo Matteini",
     author_email="dev.matteini@gmail.com",
-    description="A python module to interact with the OpenWeatherAPI in a simple and fast way.",
+    description="A python package to interact with the OpenWeatherAPI in a simple and fast way.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/devmatteini/forecastpy",
@@ -20,5 +20,5 @@ setuptools.setup(
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Operating System :: OS Independent",
     ],
-    keywords = "weather forecast openweathermap"
+    keywords="weather forecast openweathermap"
 )

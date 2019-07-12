@@ -1,17 +1,18 @@
 # ForecastPy
 
-A python module to interact with the OpenWeatherAPI in a simple and fast way.
+A python package to interact with the OpenWeatherAPI in a simple and fast way.
 
 ## Table of Contents
+
 - [Getting Started](#getting-started)
-    - [Installation](#installation)
-    - [Usage](#usage)
+  - [Installation](#installation)
+  - [Usage](#usage)
 - [Documentation](#documentation)
-    - [Dependencies](#dependencies)
-    - [Unit](#unit)
-    - [Days](#days)
-    - [Weather](#weather)
-    - [Errors](#errors)
+  - [Dependencies](#dependencies)
+  - [Unit](#unit)
+  - [Days](#days)
+  - [Weather](#weather)
+  - [Errors](#errors)
 - [Built With](#built-With)
 - [Version](#version)
 - [Author](#author)
@@ -45,7 +46,9 @@ w2 = weather.get_days_weather('CITY_NAME', Unit.METRIC, Days.TWO)
 ## Documentation
 
 ### Dependencies
+
 Python packages:
+
 - json
 - requests
 - datetime
@@ -96,12 +99,12 @@ Learn more about the [OpenWeatherAPI](https://openweathermap.org/api).
 
 ##### get_current_weather(city_name, unit = Unit.KELVIN)
 
-It makes an http request (throught the [requests](http://2.python-requests.org/en/master/) module) to the OpenWeatherMap API to get the current weather forecast of the city you searched.
+It makes an http request (throught the [requests](http://2.python-requests.org/en/master/) package) to the OpenWeatherMap API to get the current weather forecast of the city you searched.
 
-| Parameter | Description | Required |
-| --------- | ------------|------------|
-| city_name | a string that represents the city you want to know the weather| Yes |
-| unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info.| No |
+| Parameter | Description                                                                         | Required |
+| --------- | ----------------------------------------------------------------------------------- | -------- |
+| city_name | a string that represents the city you want to know the weather                      | Yes      |
+| unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info. | No       |
 
 This method returns a dictionary like the one below:
 
@@ -121,19 +124,21 @@ This method returns a dictionary like the one below:
         }
 }
 ```
+
 For errors, see the [Errors](#errors) section.
 
 ##### get_days_weather(self, city_name, unit = Unit.KELVIN, days = Days.FIVE)
 
 If you want to know the weather of a city for a maximum of 5 days (including the current day) you have to use this method.
 
-| Parameter | Description | Required |
-| --------- | ------------|------------|
-| city_name | a string that represents the city you want to know the weather| Yes |
-| unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info.| No |
-| days | default day is five [5] (You can leave it empty). See [Days](#Days) for futher info. | No |
+| Parameter | Description                                                                          | Required |
+| --------- | ------------------------------------------------------------------------------------ | -------- |
+| city_name | a string that represents the city you want to know the weather                       | Yes      |
+| unit      | default unit is kelvin (You can leave it empty). See [Unit](#unit) for futher info.  | No       |
+| days      | default day is five [5] (You can leave it empty). See [Days](#Days) for futher info. | No       |
 
 This method returns a dictionary like the one below (in this example the unit was metric and the days were two):
+
 ```
 {
    'is_status_code_ok':True,
@@ -252,29 +257,33 @@ For errors, see the [Errors](#errors) section.
 ### Errors
 
 In case something goes wrong this dictionary is what is returned:
+
 ```
 {
     'is_status_code_ok': False,
-    'cod': '404', 
+    'cod': '404',
     'message': 'city not found'
 }
 ```
 
 Common status code error:
 
-| Code | Description |
-|------|-------------|
-|400 | Bad Request - city_name or API_KEY not set|
-| 401 | Invalid API key. Please see http://openweathermap.org/faq#error401 for more info.|
-|404 | city not found|
-|429 |  API key blocked |
-|500 | internal server error|
+| Code | Description                                                                       |
+| ---- | --------------------------------------------------------------------------------- |
+| 400  | Bad Request - city_name or API_KEY not set                                        |
+| 401  | Invalid API key. Please see http://openweathermap.org/faq#error401 for more info. |
+| 404  | city not found                                                                    |
+| 429  | API key blocked                                                                   |
+| 500  | internal server error                                                             |
 
 #### Check the status code of your request
+
 If you want to quickly check if your request was successful or not, just check the `is_status_code_ok` like:
+
 ```
 w['is_status_code_ok']
 ```
+
 If the response status code is less than 400 it's `True` otherwise it's `False`
 
 ## Built With
@@ -284,12 +293,12 @@ If the response status code is less than 400 it's `True` otherwise it's `False`
 ## Version
 
 > 1.0.1
-   
-   Add install_requires to setup.py file.
+
+Add install_requires to setup.py file.
 
 > 1.0.0
 
-   Initial release. Include features like get the current weather of a city or get the weather of a city for more than one day.
+Initial release. Include features like get the current weather of a city or get the weather of a city for more than one day.
 
 ## Author
 
