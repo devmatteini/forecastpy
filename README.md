@@ -39,21 +39,17 @@ from forecastpy import Weather, Unit, Days
 weather = Weather('YOUR_API_KEY')
 
 # Get current weather from a city name
-w = weather.get_current_weather('CITY_NAME', Unit.METRIC)
+w = weather.get_current_weather('CITY_NAME', unit=Unit.METRIC)
 
 # Get weather for more than one day
-w2 = weather.get_days_weather('CITY_NAME', Unit.METRIC, Days.TWO)
+w2 = weather.get_days_weather('CITY_NAME', unit=Unit.METRIC, days=Days.TWO)
 ```
 
 ## Documentation
 
 ### Dependencies
 
-Python packages:
-
-- json
 - requests
-- datetime
 
 ### Unit
 
@@ -69,6 +65,7 @@ The available units are:
 ```
 Unit.METRIC # return 'metric'
 Unit.FAHRENHEIT # return 'imperail'
+...
 ```
 
 ### Days
@@ -99,7 +96,7 @@ Learn more about the [OpenWeatherAPI](https://openweathermap.org/api).
 
 #### Methods
 
-##### get_current_weather(city_name, unit = Unit.KELVIN)
+#### get_current_weather(city_name, unit = Unit.KELVIN)
 
 It makes an http request (throught the [requests](http://2.python-requests.org/en/master/) package) to the OpenWeatherMap API to get the current weather forecast of the city you searched.
 
@@ -129,7 +126,7 @@ This method returns a dictionary like the one below:
 
 For errors, see the [Errors](#errors) section.
 
-##### get_days_weather(self, city_name, unit = Unit.KELVIN, days = Days.FIVE)
+#### get_days_weather(self, city_name, unit = Unit.KELVIN, days = Days.FIVE)
 
 If you want to know the weather of a city for a maximum of 5 days (including the current day) you have to use this method.
 
@@ -293,6 +290,14 @@ If the response status code is less than 400 it's `True` otherwise it's `False`
 - [Python](https://python.org) (3.7)
 
 ## Version
+
+> 1.1.0
+
+Optimization and cleanup code. Add `NoneType` control to the class constructur to prevent error.
+
+> 1.0.2
+
+Temperature is now a int type
 
 > 1.0.1
 

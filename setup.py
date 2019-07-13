@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="forecastpy",
-    version="1.0.2",
+    version="1.1.0",
     author="Cosimo Matteini",
     author_email="dev.matteini@gmail.com",
     description="A python package to interact with the OpenWeatherAPI in a simple and fast way.",
